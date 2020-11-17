@@ -28,7 +28,13 @@ while True:
         pixel /= 255  
         preds = classifier.predict(pixel)
         label = int(np.argmax(preds[0]))
-        cv2.putText(frame, emotions[label], (x+20, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+        
+        
+        (Angry, Happy, Neutral, Sad, Surprise) = classifier.predict(pixel)[0]
+        
+        labels = "{}: {:.2f}%".format(emotions[label], max(Angry, Happy, Neutral, Sad, Surprise) * 100)
+        cv2.putText(frame, labels, (x+20, y-60), 
+        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     cv2.imshow('Video', cv2.resize(frame,(1600,960),interpolation = cv2.INTER_CUBIC))
     if cv2.waitKey(1) & 0xFF == ord('q'):
