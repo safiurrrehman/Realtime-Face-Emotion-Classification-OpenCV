@@ -54,7 +54,7 @@ emotion.add(Conv2D(128,(3,3), padding = 'same', activation= 'relu'))
 emotion.add(Conv2D(128,(3,3), activation= 'relu'))
 emotion.add(BatchNormalization())
 emotion.add(MaxPooling2D(pool_size=(2,2), strides= (2,2)))
-emotion.add(Dropout(0.2)
+emotion.add(Dropout(0.2))
 
 emotion.add(Conv2D(256,(3,3), padding = 'same', activation= 'relu'))
 emotion.add(Conv2D(256,(3,3), padding = 'same', activation= 'relu'))
